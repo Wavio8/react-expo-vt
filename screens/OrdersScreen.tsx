@@ -10,8 +10,10 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { Order, OrderStatus } from '../types/Order';
 import { mockOrders } from '../data/mockOrders';
+import { RootStackParamList } from '../navigation/AppNavigator';
 
 const STATUS_CONFIG: Record<OrderStatus, { label: string; color: string }> = {
   completed: { label: 'Выполнен', color: 'rgba(85, 168, 83, 1)' },
@@ -51,6 +53,7 @@ const OrderCard = React.memo(({ order }: { order: Order }) => {
 OrderCard.displayName = 'OrderCard';
 
 const OrdersScreen = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [orders] = useState<Order[]>(mockOrders);
   const [search, setSearch] = useState('');
 
@@ -99,7 +102,10 @@ const OrdersScreen = () => {
           <Ionicons name="refresh" size={18} color="rgba(69, 146, 226, 1)" />
           <Text style={styles.refreshText}>Обновить</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.newOrderButton}>
+        <TouchableOpacity
+          style={styles.newOrderButton}
+          onPress={() => navigation.navigate('ComingSoon')}
+        >
           <Text style={styles.newOrderText}>+ Новый заказ</Text>
         </TouchableOpacity>
       </View>

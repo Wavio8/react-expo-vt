@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator, FlatList } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { fetchNews } from '../utils/api';
 import { NewsItem } from '../types/NewsItem';
 import { AnimatedCard } from '../components/animCard';
@@ -45,7 +44,7 @@ const LegacyListScreen = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
+    <View style={styles.container}>
       <Text style={styles.title}>Новости</Text>
       <FlatList
         data={data}
@@ -53,7 +52,7 @@ const LegacyListScreen = () => {
         keyExtractor={keyExtractor}
         style={styles.list}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

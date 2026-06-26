@@ -1,17 +1,12 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import LegacyListScreen from './screens/LegacyListScreen';
+import { AppNavigator } from './navigation/AppNavigator';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
+    <>
       <StatusBar style="auto" />
-      <LegacyListScreen />
-    </SafeAreaView>
+      <AppNavigator />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' },
-});
